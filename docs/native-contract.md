@@ -55,6 +55,12 @@ Modern property collections use **property names**, rather than numeric PAL enum
 
 The analogous bindings are `PositionY → label_y`, `LabelRotation → label_rotation`, and `Show → label_show`. Type 2 is a field-backed property. The QGS `projectlayers/maplayer` contains the same renderer and labeling elements, plus its layer ID, name, provider, datasource, extent, and CRS. Opening a QGS must not require separately loading the QML.
 
+### CRS reader compatibility
+
+QGIS 3.34 only reads a project CRS when the project property `SpatialRefSys/ProjectionsEnabled` is nonzero. Its CRS XML reader does not initialize from an `authid`-only `spatialrefsys`: the authority lookup is gated by a valid built-in `srsid`; otherwise it tries WKT and PROJ definitions. The exporter therefore stores the real QGIS legacy internal ID and EPSG SRID alongside the authority in every CRS block, and includes `ProjectionsEnabled=1` and the authority-valued `ProjectCrs` property. The native gate still requires both the imported project and layer CRS to equal EPSG:3857.
+
+The supported legacy mappings are 3857 → 3857, 3395 → 1353, EPSG:32601–32660 → 3085–3144, and EPSG:32701–32760 → 3151–3210. These are QGIS's published built-in mappings, not fabricated IDs. The authority is resolved by QGIS's installed CRS database.
+
 ## Independent native fixture
 
 The old input has A at (0,0), with label anchor (12,8). A moves to (10,20), and **follow** produces (22,28). B moves from (100,0) to (120,10); **keep** retains its (112,8) anchor. C moves to (205,0) and stays automatic. Hidden D moves from (300,0) to (330,0), so **follow** produces (342,8), with visibility still 0. E is removed. N is new at (400,0) and automatic. Exact-string keys `007` and `7` remain separate at x=500 and x=600, with anchors x=512 and x=612. All base rotations are zero.
@@ -103,3 +109,7 @@ Seven PNGs show the relocated project, independent reference, separately importe
 - [QgsLabelingResults](https://api.qgis.org/api/3.34/classQgsLabelingResults.html): labels returned by the native renderer
 - [QGIS project datasource example and version discussion](https://github.com/qgis/QGIS/issues/48587): QGIS-written `file:./` delimited-text project paths
 - [QGIS label settings manual](https://docs.qgis.org/3.34/en/docs/user_manual/style_library/label_settings.html): data-defined placement and collision behavior
+
+- [QGIS 3.34 project reader](https://api.qgis.org/api/3.34/qgsproject_8cpp_source.html): `SpatialRefSys/ProjectionsEnabled` and project CRS reading
+- [QGIS 3.34 CRS XML reader](https://api.qgis.org/api/3.34/qgscoordinatereferencesystem_8cpp_source.html): authority lookup prerequisites and WKT/PROJ fallback
+- [QGIS published legacy CRS ID map](https://api.qgis.org/api/3.28/qgscoordinatereferencesystem__legacy__p_8h_source.html): real internal IDs for the supported EPSG systems
