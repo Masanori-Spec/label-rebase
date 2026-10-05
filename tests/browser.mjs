@@ -191,6 +191,10 @@ async function keyboardAudit(page) {
   assert.deepEqual([...required].filter(id => !visited.has(id)), [], 'Required controls unreachable by Tab');
   const unlabeled = await page.locator('input, textarea, select').evaluateAll(nodes => nodes.filter(node => node.type !== 'hidden' && !node.disabled && !(node.labels?.length || node.getAttribute('aria-label')?.trim() || node.getAttribute('aria-labelledby')?.trim())).map(node => node.id || node.outerHTML.slice(0, 160)));
   assert.deepEqual(unlabeled, [], 'Form controls need accessible names');
+  await page.locator('.skip').focus();
+  const focusedSkip = await page.locator('.skip').evaluate(node => ({clip: getComputedStyle(node).clipPath, width: node.getBoundingClientRect().width}));
+  assert.equal(focusedSkip.clip, 'none');
+  assert.ok(focusedSkip.width > 20, 'Focused skip link must be visible and usable');
   await page.locator('#demo').focus();
   await page.keyboard.press('Enter');
   await expect(page.locator('#oldCSV')).toHaveValue(OLD);
@@ -239,6 +243,10 @@ try {
     await page.locator('[data-decision-key="D"]').selectOption('follow');
     await expect(page.locator('#export')).toBeEnabled();
     await assertDecisions(page);
+    await expect(page.locator('#result tbody tr').filter({hasText: 'Charlie'}).locator('td').nth(5)).toHaveText('自動配置');
+    const skipStyle = await page.locator('.skip').evaluate(node => ({clip: getComputedStyle(node).clipPath, width: node.getBoundingClientRect().width}));
+    assert.notEqual(skipStyle.clip, 'none', 'Unfocused skip link must be clipped, not painted outside the viewport');
+    assert.equal(skipStyle.width, 1);
     await screenshot(page, 'desktop-ja-ready.png');
     await noOverflow(page);
   });
