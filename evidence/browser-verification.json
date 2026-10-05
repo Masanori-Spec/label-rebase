@@ -1,0 +1,440 @@
+{
+  "ok": true,
+  "baseURL": "http://127.0.0.1:4173/label-rebase/",
+  "commit": "e0e2525c09deb54cda4f9d7fff99157ea296e492",
+  "startedAt": "2026-10-05T05:15:12.640Z",
+  "checks": [
+    {
+      "name": "Hosted Ubuntu 22.04 execution boundary",
+      "ok": true,
+      "detail": {
+        "runner": "github-hosted",
+        "os": "Ubuntu 22.04",
+        "uid": 1001
+      }
+    },
+    {
+      "name": "Chromium sandbox command line independently inspected",
+      "ok": true,
+      "detail": {
+        "chromiumSandbox": true,
+        "forbiddenFlags": []
+      }
+    },
+    {
+      "name": "Japanese desktop initial state and layout",
+      "ok": true,
+      "detail": {
+        "viewport": 1360,
+        "document": 1360,
+        "body": 1360
+      }
+    },
+    {
+      "name": "All moved pinned labels require explicit decisions",
+      "ok": true
+    },
+    {
+      "name": "Japanese and English preserve current inputs and decisions",
+      "ok": true,
+      "detail": {
+        "japanese": [
+          "サンプルで試す",
+          "クリア",
+          "照合して配置方針を選ぶ →",
+          "作業を保存",
+          "QGIS 用 ZIP を保存"
+        ],
+        "english": [
+          "Try the example",
+          "Clear",
+          "Compare and choose label policies →",
+          "Save project",
+          "Save QGIS ZIP"
+        ]
+      }
+    },
+    {
+      "name": "Exact downloaded ZIP passes independent Python bundle and Decimal verification",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "rows": 7,
+        "removedKeys": [
+          "E"
+        ],
+        "newKeys": [
+          "N"
+        ],
+        "verified": [
+          "exact Decimal reconciliation",
+          "CSV stable keys/text/types",
+          "QML/QGS bindings",
+          "relative datasource and CRS",
+          "SHA256 source receipts",
+          "saved input and decisions",
+          "ZIP CRC and member equality"
+        ],
+        "nativeQGIS": "not evaluated by this structural verifier"
+      }
+    },
+    {
+      "name": "Project download preserves both CSVs, CRS, mappings, and decisions",
+      "ok": true
+    },
+    {
+      "name": "Keyboard traversal, activation, and visible focus",
+      "ok": true,
+      "detail": {
+        "requiredControls": [
+          "demo",
+          "clear",
+          "oldCSV",
+          "oldCRS",
+          "newCSV",
+          "newCRS",
+          "analyze",
+          "saveProject",
+          "export",
+          "lang"
+        ],
+        "focusIndicators": [
+          {
+            "id": "demo",
+            "tag": "BUTTON",
+            "visible": true,
+            "focusVisible": true,
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "boxShadow": "none"
+          },
+          {
+            "id": "clear",
+            "tag": "BUTTON",
+            "visible": true,
+            "focusVisible": true,
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "boxShadow": "none"
+          },
+          {
+            "id": "oldCSV",
+            "tag": "TEXTAREA",
+            "visible": true,
+            "focusVisible": true,
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "boxShadow": "none"
+          },
+          {
+            "id": "oldCRS",
+            "tag": "INPUT",
+            "visible": true,
+            "focusVisible": true,
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "boxShadow": "none"
+          },
+          {
+            "id": "newCSV",
+            "tag": "TEXTAREA",
+            "visible": true,
+            "focusVisible": true,
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "boxShadow": "none"
+          },
+          {
+            "id": "newCRS",
+            "tag": "INPUT",
+            "visible": true,
+            "focusVisible": true,
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "boxShadow": "none"
+          },
+          {
+            "id": "analyze",
+            "tag": "BUTTON",
+            "visible": true,
+            "focusVisible": true,
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "boxShadow": "none"
+          },
+          {
+            "id": "saveProject",
+            "tag": "BUTTON",
+            "visible": true,
+            "focusVisible": true,
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "boxShadow": "none"
+          },
+          {
+            "id": "export",
+            "tag": "BUTTON",
+            "visible": true,
+            "focusVisible": true,
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "boxShadow": "none"
+          },
+          {
+            "id": "lang",
+            "tag": "SELECT",
+            "visible": true,
+            "focusVisible": true,
+            "outlineStyle": "solid",
+            "outlineWidth": "3px",
+            "boxShadow": "none"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Clear resets sources, decisions, results, and export",
+      "ok": true
+    },
+    {
+      "name": "Saved project import restores a newly analyzed ready result",
+      "ok": true
+    },
+    {
+      "name": "Edits invalidate ready exports and block duplicate stable key",
+      "ok": true,
+      "detail": {
+        "status": "キーが重複しています。どの行を使うか元の CSV で解決してください。 [A]"
+      }
+    },
+    {
+      "name": "Edits invalidate ready exports and block one-sided label coordinates",
+      "ok": true,
+      "detail": {
+        "status": "ラベル X/Y は両方とも数値、または両方とも空欄にしてください。 [A]"
+      }
+    },
+    {
+      "name": "Edits invalidate ready exports and block non-finite point coordinate",
+      "ok": true,
+      "detail": {
+        "status": "座標と回転は有限の十進数にしてください。NaN・Infinity・余分な空白は使えません。"
+      }
+    },
+    {
+      "name": "Edits invalidate ready exports and block mismatched declared projected CRS",
+      "ok": true,
+      "detail": {
+        "status": "旧点・新点・ラベル座標には同じ投影座標系が必要です。"
+      }
+    },
+    {
+      "name": "Edits invalidate ready exports and block unsupported geographic CRS",
+      "ok": true,
+      "detail": {
+        "status": "対応する投影座標系を指定してください: EPSG:3857、3395、32601–32660、32701–32760。"
+      }
+    },
+    {
+      "name": "Edits invalidate ready exports and block malformed quoted CSV",
+      "ok": true,
+      "detail": {
+        "status": "CSV の引用符が閉じていないか、位置が不正です。"
+      }
+    },
+    {
+      "name": "Out-of-range follow arithmetic blocks both downloads and recovers without an exception",
+      "ok": true
+    },
+    {
+      "name": "Exact cancellation of wide intermediate arithmetic leaves the tiny final anchor exportable",
+      "ok": true
+    },
+    {
+      "name": "Mapping changes invalidate results and duplicate roles block export",
+      "ok": true
+    },
+    {
+      "name": "Optional none mappings survive locale changes and saved-project restore",
+      "ok": true
+    },
+    {
+      "name": "Valid CSV file imports invalidate and reanalyze; repeated same files work",
+      "ok": true
+    },
+    {
+      "name": "Malformed CSV file imports cannot leave stale exports enabled",
+      "ok": true
+    },
+    {
+      "name": "Malformed, unsupported, and semantically invalid projects clear old results",
+      "ok": true
+    },
+    {
+      "name": "Custom-header mappings and reset policy survive an independently verified export",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "rows": 7,
+        "removedKeys": [
+          "E"
+        ],
+        "newKeys": [
+          "N"
+        ],
+        "verified": [
+          "exact Decimal reconciliation",
+          "CSV stable keys/text/types",
+          "QML/QGS bindings",
+          "relative datasource and CRS",
+          "SHA256 source receipts",
+          "saved input and decisions",
+          "ZIP CRC and member equality"
+        ],
+        "nativeQGIS": "not evaluated by this structural verifier"
+      }
+    },
+    {
+      "name": "HTML-like label text is displayed literally without DOM execution",
+      "ok": true
+    },
+    {
+      "name": "Standalone HTML works offline from file:// and exports an independently verified ZIP",
+      "ok": true,
+      "detail": {
+        "offline": true,
+        "protocol": "file:",
+        "ok": true,
+        "rows": 7,
+        "removedKeys": [
+          "E"
+        ],
+        "newKeys": [
+          "N"
+        ],
+        "verified": [
+          "exact Decimal reconciliation",
+          "CSV stable keys/text/types",
+          "QML/QGS bindings",
+          "relative datasource and CRS",
+          "SHA256 source receipts",
+          "saved input and decisions",
+          "ZIP CRC and member equality"
+        ],
+        "nativeQGIS": "not evaluated by this structural verifier"
+      }
+    },
+    {
+      "name": "390×844 Japanese mobile layout and pending decisions",
+      "ok": true
+    },
+    {
+      "name": "390×844 English mobile layout preserves choices; edits still block export",
+      "ok": true
+    },
+    {
+      "name": "No uncaught errors, failed requests, or HTML-injection dialogs",
+      "ok": true
+    }
+  ],
+  "screenshots": [
+    "desktop-ja-initial.png",
+    "desktop-ja-pending.png",
+    "desktop-ja-ready.png",
+    "desktop-en-ready.png",
+    "desktop-project-restored.png",
+    "desktop-arithmetic-range-blocked.png",
+    "desktop-arithmetic-cancellation-ready.png",
+    "desktop-custom-mapping-reset.png",
+    "desktop-literal-label.png",
+    "offline-file-ready.png",
+    "mobile-ja-pending.png",
+    "mobile-ja-ready.png",
+    "mobile-en-ready.png",
+    "mobile-en-invalid.png"
+  ],
+  "downloads": [
+    {
+      "filename": "downloaded.zip",
+      "suggestedFilename": "label-rebase-bundle.zip",
+      "bytes": 9885,
+      "sha256": "8502f87343710212d598b98636f50a293ee32c67c6c21cc490d1733d38a47f5e"
+    },
+    {
+      "filename": "labelrebase-project.json",
+      "suggestedFilename": "labelrebase-project.json",
+      "bytes": 822,
+      "sha256": "94a3a046f9385b55d33dcfa840b921c4ef1f5397e898ce21f1fa2350cece0dac"
+    },
+    {
+      "filename": "optional-none-project.json",
+      "suggestedFilename": "labelrebase-project.json",
+      "bytes": 810,
+      "sha256": "c8c558b3a71ada8da2514948e726fde1278e1e95c9092b8671a048b03081b35c"
+    },
+    {
+      "filename": "custom-mapping-reset.zip",
+      "suggestedFilename": "label-rebase-bundle.zip",
+      "bytes": 9976,
+      "sha256": "59b4ec4b7a342cd1395834e8318321b9a2d3f50cc159f8c6cea580de41e6f610"
+    },
+    {
+      "filename": "offline-downloaded.zip",
+      "suggestedFilename": "label-rebase-bundle.zip",
+      "bytes": 9885,
+      "sha256": "8502f87343710212d598b98636f50a293ee32c67c6c21cc490d1733d38a47f5e"
+    }
+  ],
+  "errors": [],
+  "browser": {
+    "version": "141.0.7390.37",
+    "chromiumSandbox": true,
+    "commandLine": [
+      "/home/runner/.cache/ms-playwright/chromium_headless_shell-1194/chrome-linux/headless_shell",
+      "--disable-field-trial-config",
+      "--disable-background-networking",
+      "--disable-background-timer-throttling",
+      "--disable-backgrounding-occluded-windows",
+      "--disable-back-forward-cache",
+      "--disable-breakpad",
+      "--disable-client-side-phishing-detection",
+      "--disable-component-extensions-with-background-pages",
+      "--disable-component-update",
+      "--no-default-browser-check",
+      "--disable-default-apps",
+      "--disable-dev-shm-usage",
+      "--disable-extensions",
+      "--disable-features=AcceptCHFrame,AvoidUnnecessaryBeforeUnloadCheckSync,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument",
+      "--enable-features=CDPScreenshotNewSurface",
+      "--allow-pre-commit-input",
+      "--disable-hang-monitor",
+      "--disable-ipc-flooding-protection",
+      "--disable-popup-blocking",
+      "--disable-prompt-on-repost",
+      "--disable-renderer-backgrounding",
+      "--force-color-profile=srgb",
+      "--metrics-recording-only",
+      "--no-first-run",
+      "--password-store=basic",
+      "--use-mock-keychain",
+      "--no-service-autorun",
+      "--export-tagged-pdf",
+      "--disable-search-engine-choice-screen",
+      "--unsafely-disable-devtools-self-xss-warnings",
+      "--edge-skip-compat-layer-relaunch",
+      "--enable-automation",
+      "--headless",
+      "--hide-scrollbars",
+      "--mute-audio",
+      "--blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4",
+      "--user-data-dir=/tmp/playwright_chromiumdev_profile-Q6SaER",
+      "--remote-debugging-pipe",
+      "--no-startup-window",
+      "--use-gl=angle",
+      "--use-angle=swiftshader-webgl",
+      "--ozone-platform=headless",
+      "--allow-pre-commit-input"
+    ]
+  },
+  "finishedAt": "2026-10-05T05:15:23.173Z"
+}

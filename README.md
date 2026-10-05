@@ -2,7 +2,7 @@
 
 Carry manually positioned QGIS point labels into a refreshed CSV by an explicit stable key. Choose **follow the point**, **keep the map position**, or **reset to automatic** for each moved pinned label. Old feature IDs and row positions are never identities.
 
-**Status: release candidate. Native QGIS 3.34.4 import/render gate passed; the complete UI/browser-download CI is pending for this source revision.**
+**Status: verified prototype. The Node 22/24 checks, 29 sandboxed browser checks, and real QGIS 3.34.4 checks on CLI and browser-download output have passed.**
 
 The generated bundle contains typed CSV, a minimal authored QML style, a relative-path QGIS project, a source-hashed decision receipt and a reusable project JSON. Keys remain strings: `007` and `7` are different. Hidden labels remain hidden. New features use automatic placement; removed keys appear in the receipt.
 
@@ -36,4 +36,4 @@ QGIS already supports auxiliary label storage, joins and manual expressions. Lab
 
 The early native gate passed at commit `2598d28c9e1db398c7924c8e0085b04d07ce1ad1`: https://github.com/Masanori-Spec/label-rebase/actions/runs/37264195166 . QGIS 3.34.4 read the relocated project and its typed CSV, rendered it, matched pinned-label polygons exactly against an independently authored native layer, preserved numeric-only keys `007`/`7`, and verified visibility, rotation and FID-reordering controls. This is a specific tested runtime, not a claim that every QGIS release is supported.
 
-The full workflow separately runs a dependency-free core/independent oracle on Node 22/24, sandboxed Chromium on Ubuntu 22.04, then native QGIS on Ubuntu 24.04 against both CLI output and the **actual browser download**. See `docs/verification.md` for passed versus pending stages.
+The full workflow separately runs a dependency-free core/independent oracle on Node 22/24, sandboxed Chromium on Ubuntu 22.04, then native QGIS on Ubuntu 24.04 against both CLI output and the **actual browser download**. The full verified run is https://github.com/Masanori-Spec/label-rebase/actions/runs/37266880133 at source commit `e0e2525c09deb54cda4f9d7fff99157ea296e492`. See `docs/verification.md` and the receipts/screenshots in `evidence/`.

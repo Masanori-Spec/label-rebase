@@ -1,0 +1,69 @@
+{
+  "project": "LabelRebase",
+  "version": "0.1.0",
+  "passed": true,
+  "sourceCommit": "e0e2525c09deb54cda4f9d7fff99157ea296e492",
+  "workflowRun": {
+    "id": 37266880133,
+    "url": "https://github.com/Masanori-Spec/label-rebase/actions/runs/37266880133",
+    "conclusion": "success"
+  },
+  "counts": {
+    "nodeUnitTestsPerVersion": 22,
+    "independentPythonMethodsPerVersion": 51,
+    "browserChecks": 29,
+    "nativeChecksCLI": 8,
+    "nativeChecksBrowserDownload": 8
+  },
+  "runtimes": {
+    "nodeMatrix": [
+      22,
+      24
+    ],
+    "chromium": "141.0.7390.37",
+    "chromiumSandbox": true,
+    "qgis": "3.34.4-Prizren",
+    "qt": "5.15.13"
+  },
+  "artifacts": {
+    "browser": {
+      "id": 11326791950,
+      "sha256": "f252cc24dd2b9a5fa07688b3630f09fd8acf174806da8c10a1e66e7041529ef9"
+    },
+    "native": {
+      "id": 11326637607,
+      "sha256": "07bc9ee36bbb12f37731aa350feb5d76a905c369780ed17be933f328a70374e0"
+    }
+  },
+  "verification": {
+    "actualBrowserDownloadNativeInputHashMatch": true,
+    "nativePngHashCount": 14,
+    "nativePngHashesMatch": true,
+    "pinnedPolygonMaxCornerDistance": 0,
+    "committedStandaloneMatchesFreshBuild": true,
+    "offlineFileDownloadVerified": true,
+    "htmlSHA256": "5b20a3da288f7650d004c18c1a10628ceae888618fe909b007092b8ed7c3e06f"
+  },
+  "visualReview": {
+    "desktop": [
+      1360,
+      900
+    ],
+    "mobile": [
+      390,
+      844
+    ],
+    "languages": [
+      "ja",
+      "en"
+    ],
+    "result": "Controls and output remain legible, no document horizontal overflow, no clipped skip-link artifact, corrected automatic/retained policy wording. Wide ledger scrolls within its own region.",
+    "screenshots": {
+      "desktop-ja.png": "ecd50e3fa62cc70e7ffd2624d8a46b174f2319048884116c026f726b1c6149f0",
+      "mobile-ja.png": "2ea70061e5ef37a2344f98c6ae441e53d8da4f2d1318121c64ac90b986043637",
+      "desktop-en.png": "bd92a08e548602efb96b3bf0a0a7883c73a2ce68316032f4847108e0502c560a",
+      "mobile-en.png": "2ae122cfbc07d9aab783e70f1a3cdd1c8098ae991e27b7f9be8ea56f90e27631"
+    }
+  },
+  "scope": "Own synthetic single-point EPSG:3857 fixtures and minimal authored style. Other accepted projected codes have structural tests, not native rendering coverage. No source-style, reprojection or collision-free guarantee."
+}
