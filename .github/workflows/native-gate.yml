@@ -1,0 +1,36 @@
+name: Native QGIS import and render gate
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qgis-import-render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      QT_QPA_PLATFORM: offscreen
+      XDG_RUNTIME_DIR: /tmp/label-rebase-runtime
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install distro-maintained runtime only
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y python3-qgis fonts-dejavu-core
+          mkdir -p "$XDG_RUNTIME_DIR"
+          chmod 700 "$XDG_RUNTIME_DIR"
+      - run: node scripts/export-demo.mjs
+      - name: Relocate and open generated QGIS project, compare independent render
+        run: /usr/bin/python3 scripts/native-qgis.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: label-rebase-native-evidence
+          path: artifacts/native/
+          if-no-files-found: error
