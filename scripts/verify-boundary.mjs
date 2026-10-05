@@ -1,0 +1,6 @@
+import assert from 'node:assert/strict';import fs from 'node:fs/promises';import {performance} from 'node:perf_hooks';import {rebase} from '../src/core.mjs';import {exportZip} from '../src/export.mjs';
+let oldCSV='key,x,y,label_x,label_y,rotation,show\n',newCSV='key,x,y,text\n';const decisions=Object.create(null);
+for(let i=0;i<5000;i++){const k=String(i).padStart(6,'0');oldCSV+=`${k},${i},0,${i}.125,0.25,0,1\n`;newCSV+=`${k},${i+1},2,Point ${k}\n`;decisions[k]='follow';}
+const input={oldCSV,newCSV,oldCRS:'EPSG:3857',newCRS:'EPSG:3857'},start=performance.now(),r=rebase(input,decisions),zip=await exportZip(input,decisions),milliseconds=performance.now()-start;
+assert.equal(r.rows.length,5000);assert.equal(r.rows[4999].label_x,'5000.125');assert.equal(r.rows[0].label_y,'2.25');assert.throws(()=>rebase({...input,newCSV:newCSV+'over,1,2,Too many\n'},decisions),e=>e.code==='ROW_LIMIT');
+const out={passed:true,rows:5000,milliseconds:Number(milliseconds.toFixed(2)),zipBytes:zip.length,node:process.version,scope:'Authored maximum-row fixture, exact offsets and row-limit rejection. Not a universal performance guarantee.'};await fs.mkdir('artifacts',{recursive:true});await fs.writeFile('artifacts/boundary.json',JSON.stringify(out,null,2)+'\n');console.log(JSON.stringify(out));

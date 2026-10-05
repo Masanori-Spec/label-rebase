@@ -1,0 +1,8 @@
+stable_key,point_x,point_y,label_text,label_x,label_y,label_rotation,label_show,label_state
+A,10,20,駅 A,22,28,0,1,pinned
+B,120,10,"B, right",112,8,15,1,pinned
+C,205,0,"C ""automatic""",,,0,1,auto
+D,330,0,D hidden,342,8,30,0,pinned
+N,400,50,New line,,,0,1,auto
+007,501,1,007 exact,511,6,0,1,pinned
+7,602,2,7 distinct,620,6,0,1,pinned

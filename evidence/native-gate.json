@@ -1,0 +1,1496 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "checked_at": "2026-10-05T04:37:06.384353+00:00",
+  "checks": [
+    "actual exporter bundle and typed-string CSVT inspected",
+    "QgsProject.read + valid layer after real folder move and unrelated cwd",
+    "native fields, geometry, exact keys 007/7, A follow, B keep, C/N null, D hidden, E absent",
+    "pinned label polygons/positions match independent native memory layer; C/N automatic and D absent",
+    "separately imported actual QML matches project and independent label geometry",
+    "provider FIDs really change under CSV reversal; stable-key values and pinned polygons do not",
+    "numeric-looking-only CSV subset preserves distinct String keys 007/7 through actual CSVT",
+    "native positive controls: D becomes visible and B rotates with unchanged exported style"
+  ],
+  "scope": "EPSG:3857 single-line point labels; generated minimal style, no original-style preservation",
+  "comparison_tolerance_map_units": 1e-07,
+  "automatic_label_collision_positions_are_not_exactly_compared": true,
+  "runtime": {
+    "qgis": "3.34.4-Prizren",
+    "qgis_version_int": 33404,
+    "qt": "5.15.13",
+    "pyqt": "5.15.10",
+    "python": "3.12.3",
+    "gdal": "3.8.4",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "distribution_packages": [
+      "fonts-dejavu-core=2.37-8",
+      "python3-qgis=3.34.4+dfsg-4build2"
+    ],
+    "font_requested": "DejaVu Sans",
+    "font_resolved": "DejaVu Sans",
+    "github_sha": "2598d28c9e1db398c7924c8e0085b04d07ce1ad1",
+    "github_run_id": "37264195166"
+  },
+  "inputs": {
+    "rebased.csv": {
+      "sha256": "82759832071dfd886757d181b2a9bd2ab476ef7916df38c585b8ce98f6492996",
+      "bytes": 319
+    },
+    "rebased.csvt": {
+      "sha256": "9c7cacb4780ebdaaa3a8e87cb62061381d8879a7bdc920cb2b56d373983018ff",
+      "bytes": 72
+    },
+    "rebased.qml": {
+      "sha256": "9022be97d4ad8cbcd581a35d52ac41f2c4c5e6089690541e295ce5e5bd0761e2",
+      "bytes": 2054
+    },
+    "rebased.qgs": {
+      "sha256": "4ff3dd94f49863af6cb58f8ae1412128d94f8a68f80308917886ce916252711e",
+      "bytes": 3613
+    }
+  },
+  "imported": {
+    "rows": {
+      "B": {
+        "point_x": 120.0,
+        "point_y": 10.0,
+        "label_text": "Bravo",
+        "label_x": 112.0,
+        "label_y": 8.0,
+        "label_rotation": 0.0,
+        "label_show": 1.0,
+        "label_state": "pinned"
+      },
+      "N": {
+        "point_x": 400.0,
+        "point_y": 0.0,
+        "label_text": "New",
+        "label_x": null,
+        "label_y": null,
+        "label_rotation": 0.0,
+        "label_show": 1.0,
+        "label_state": "auto"
+      },
+      "D": {
+        "point_x": 330.0,
+        "point_y": 0.0,
+        "label_text": "Hidden",
+        "label_x": 342.0,
+        "label_y": 8.0,
+        "label_rotation": 0.0,
+        "label_show": 0.0,
+        "label_state": "pinned"
+      },
+      "A": {
+        "point_x": 10.0,
+        "point_y": 20.0,
+        "label_text": "Alpha",
+        "label_x": 22.0,
+        "label_y": 28.0,
+        "label_rotation": 0.0,
+        "label_show": 1.0,
+        "label_state": "pinned"
+      },
+      "C": {
+        "point_x": 205.0,
+        "point_y": 0.0,
+        "label_text": "Charlie",
+        "label_x": null,
+        "label_y": null,
+        "label_rotation": 0.0,
+        "label_show": 1.0,
+        "label_state": "auto"
+      },
+      "7": {
+        "point_x": 600.0,
+        "point_y": 0.0,
+        "label_text": "Seven",
+        "label_x": 612.0,
+        "label_y": 8.0,
+        "label_rotation": 0.0,
+        "label_show": 1.0,
+        "label_state": "pinned"
+      },
+      "007": {
+        "point_x": 500.0,
+        "point_y": 0.0,
+        "label_text": "Zero zero seven",
+        "label_x": 512.0,
+        "label_y": 8.0,
+        "label_rotation": 0.0,
+        "label_show": 1.0,
+        "label_state": "pinned"
+      }
+    },
+    "provider_fids": {
+      "B": 2,
+      "N": 3,
+      "D": 4,
+      "A": 5,
+      "C": 6,
+      "7": 7,
+      "007": 8
+    },
+    "bindings": {
+      "PositionX": "label_x",
+      "PositionY": "label_y",
+      "LabelRotation": "label_rotation",
+      "Show": "label_show"
+    }
+  },
+  "renders": {
+    "independent": {
+      "labels": {
+        "007": {
+          "text": "Zero zero seven",
+          "pinned": true,
+          "corners": [
+            [
+              512.0,
+              8.0
+            ],
+            [
+              564.3046875,
+              7.999999999999988
+            ],
+            [
+              564.3046875,
+              16.499999999999986
+            ],
+            [
+              512.0,
+              16.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((512 8, 564.3046875 8, 564.3046875 16.5, 512 16.5, 512 8))",
+          "rotation": -360.0,
+          "width": 52.3046875,
+          "height": 8.5
+        },
+        "C": {
+          "text": "Charlie",
+          "pinned": false,
+          "corners": [
+            [
+              205.0,
+              0.0
+            ],
+            [
+              227.8984375,
+              -5.6084996379701445e-15
+            ],
+            [
+              227.8984375,
+              8.499999999999995
+            ],
+            [
+              205.0,
+              8.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((205 0, 227.8984375 0, 227.8984375 8.5, 205 8.5, 205 0))",
+          "rotation": -360.0,
+          "width": 22.8984375,
+          "height": 8.5
+        },
+        "7": {
+          "text": "Seven",
+          "pinned": true,
+          "corners": [
+            [
+              612.0,
+              8.0
+            ],
+            [
+              632.0703125,
+              7.999999999999995
+            ],
+            [
+              632.0703125,
+              16.499999999999993
+            ],
+            [
+              612.0,
+              16.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((612 8, 632.0703125 8, 632.0703125 16.5, 612 16.5, 612 8))",
+          "rotation": -360.0,
+          "width": 20.0703125,
+          "height": 8.5
+        },
+        "B": {
+          "text": "Bravo",
+          "pinned": true,
+          "corners": [
+            [
+              112.0,
+              8.0
+            ],
+            [
+              130.921875,
+              7.999999999999996
+            ],
+            [
+              130.921875,
+              16.499999999999996
+            ],
+            [
+              112.0,
+              16.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((112 8, 130.921875 8, 130.921875 16.5, 112 16.5, 112 8))",
+          "rotation": -360.0,
+          "width": 18.921875,
+          "height": 8.5
+        },
+        "A": {
+          "text": "Alpha",
+          "pinned": true,
+          "corners": [
+            [
+              22.0,
+              28.0
+            ],
+            [
+              40.46875,
+              27.999999999999996
+            ],
+            [
+              40.46875,
+              36.5
+            ],
+            [
+              22.000000000000004,
+              36.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((22 28, 40.46875 28, 40.46875 36.5, 22 36.5, 22 28))",
+          "rotation": -360.0,
+          "width": 18.46875,
+          "height": 8.5
+        },
+        "N": {
+          "text": "New",
+          "pinned": false,
+          "corners": [
+            [
+              400.0,
+              0.0
+            ],
+            [
+              414.1640625,
+              -3.4691947607096114e-15
+            ],
+            [
+              414.1640625,
+              8.499999999999996
+            ],
+            [
+              400.0,
+              8.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((400 0, 414.1640625 0, 414.1640625 8.5, 400 8.5, 400 0))",
+          "rotation": -360.0,
+          "width": 14.1640625,
+          "height": 8.5
+        }
+      },
+      "png": "independent-reference.png",
+      "sha256": "23a14515b655cebf2ba92374ffdc00a29134916d49ce949db21e61b917eebe37",
+      "extent": [
+        -40,
+        -85,
+        690,
+        135
+      ],
+      "pixels": [
+        1460,
+        440
+      ],
+      "dpi": 96
+    },
+    "project": {
+      "labels": {
+        "007": {
+          "text": "Zero zero seven",
+          "pinned": true,
+          "corners": [
+            [
+              512.0,
+              8.0
+            ],
+            [
+              564.3046875,
+              7.999999999999988
+            ],
+            [
+              564.3046875,
+              16.499999999999986
+            ],
+            [
+              512.0,
+              16.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((512 8, 564.3046875 8, 564.3046875 16.5, 512 16.5, 512 8))",
+          "rotation": -360.0,
+          "width": 52.3046875,
+          "height": 8.5
+        },
+        "C": {
+          "text": "Charlie",
+          "pinned": false,
+          "corners": [
+            [
+              205.0,
+              0.0
+            ],
+            [
+              227.8984375,
+              -5.6084996379701445e-15
+            ],
+            [
+              227.8984375,
+              8.499999999999995
+            ],
+            [
+              205.0,
+              8.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((205 0, 227.8984375 0, 227.8984375 8.5, 205 8.5, 205 0))",
+          "rotation": -360.0,
+          "width": 22.8984375,
+          "height": 8.5
+        },
+        "7": {
+          "text": "Seven",
+          "pinned": true,
+          "corners": [
+            [
+              612.0,
+              8.0
+            ],
+            [
+              632.0703125,
+              7.999999999999995
+            ],
+            [
+              632.0703125,
+              16.499999999999993
+            ],
+            [
+              612.0,
+              16.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((612 8, 632.0703125 8, 632.0703125 16.5, 612 16.5, 612 8))",
+          "rotation": -360.0,
+          "width": 20.0703125,
+          "height": 8.5
+        },
+        "B": {
+          "text": "Bravo",
+          "pinned": true,
+          "corners": [
+            [
+              112.0,
+              8.0
+            ],
+            [
+              130.921875,
+              7.999999999999996
+            ],
+            [
+              130.921875,
+              16.499999999999996
+            ],
+            [
+              112.0,
+              16.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((112 8, 130.921875 8, 130.921875 16.5, 112 16.5, 112 8))",
+          "rotation": -360.0,
+          "width": 18.921875,
+          "height": 8.5
+        },
+        "A": {
+          "text": "Alpha",
+          "pinned": true,
+          "corners": [
+            [
+              22.0,
+              28.0
+            ],
+            [
+              40.46875,
+              27.999999999999996
+            ],
+            [
+              40.46875,
+              36.5
+            ],
+            [
+              22.000000000000004,
+              36.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((22 28, 40.46875 28, 40.46875 36.5, 22 36.5, 22 28))",
+          "rotation": -360.0,
+          "width": 18.46875,
+          "height": 8.5
+        },
+        "N": {
+          "text": "New",
+          "pinned": false,
+          "corners": [
+            [
+              400.0,
+              0.0
+            ],
+            [
+              414.1640625,
+              -3.4691947607096114e-15
+            ],
+            [
+              414.1640625,
+              8.499999999999996
+            ],
+            [
+              400.0,
+              8.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((400 0, 414.1640625 0, 414.1640625 8.5, 400 8.5, 400 0))",
+          "rotation": -360.0,
+          "width": 14.1640625,
+          "height": 8.5
+        }
+      },
+      "png": "relocated-project.png",
+      "sha256": "42c7917724d108494677e80fa69ce56daaad340e247297d710c4e30f17709398",
+      "extent": [
+        -40,
+        -85,
+        690,
+        135
+      ],
+      "pixels": [
+        1460,
+        440
+      ],
+      "dpi": 96
+    },
+    "standalone_qml": {
+      "labels": {
+        "007": {
+          "text": "Zero zero seven",
+          "pinned": true,
+          "corners": [
+            [
+              512.0,
+              8.0
+            ],
+            [
+              564.3046875,
+              7.999999999999988
+            ],
+            [
+              564.3046875,
+              16.499999999999986
+            ],
+            [
+              512.0,
+              16.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((512 8, 564.3046875 8, 564.3046875 16.5, 512 16.5, 512 8))",
+          "rotation": -360.0,
+          "width": 52.3046875,
+          "height": 8.5
+        },
+        "C": {
+          "text": "Charlie",
+          "pinned": false,
+          "corners": [
+            [
+              205.0,
+              0.0
+            ],
+            [
+              227.8984375,
+              -5.6084996379701445e-15
+            ],
+            [
+              227.8984375,
+              8.499999999999995
+            ],
+            [
+              205.0,
+              8.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((205 0, 227.8984375 0, 227.8984375 8.5, 205 8.5, 205 0))",
+          "rotation": -360.0,
+          "width": 22.8984375,
+          "height": 8.5
+        },
+        "7": {
+          "text": "Seven",
+          "pinned": true,
+          "corners": [
+            [
+              612.0,
+              8.0
+            ],
+            [
+              632.0703125,
+              7.999999999999995
+            ],
+            [
+              632.0703125,
+              16.499999999999993
+            ],
+            [
+              612.0,
+              16.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((612 8, 632.0703125 8, 632.0703125 16.5, 612 16.5, 612 8))",
+          "rotation": -360.0,
+          "width": 20.0703125,
+          "height": 8.5
+        },
+        "B": {
+          "text": "Bravo",
+          "pinned": true,
+          "corners": [
+            [
+              112.0,
+              8.0
+            ],
+            [
+              130.921875,
+              7.999999999999996
+            ],
+            [
+              130.921875,
+              16.499999999999996
+            ],
+            [
+              112.0,
+              16.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((112 8, 130.921875 8, 130.921875 16.5, 112 16.5, 112 8))",
+          "rotation": -360.0,
+          "width": 18.921875,
+          "height": 8.5
+        },
+        "A": {
+          "text": "Alpha",
+          "pinned": true,
+          "corners": [
+            [
+              22.0,
+              28.0
+            ],
+            [
+              40.46875,
+              27.999999999999996
+            ],
+            [
+              40.46875,
+              36.5
+            ],
+            [
+              22.000000000000004,
+              36.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((22 28, 40.46875 28, 40.46875 36.5, 22 36.5, 22 28))",
+          "rotation": -360.0,
+          "width": 18.46875,
+          "height": 8.5
+        },
+        "N": {
+          "text": "New",
+          "pinned": false,
+          "corners": [
+            [
+              400.0,
+              0.0
+            ],
+            [
+              414.1640625,
+              -3.4691947607096114e-15
+            ],
+            [
+              414.1640625,
+              8.499999999999996
+            ],
+            [
+              400.0,
+              8.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((400 0, 414.1640625 0, 414.1640625 8.5, 400 8.5, 400 0))",
+          "rotation": -360.0,
+          "width": 14.1640625,
+          "height": 8.5
+        }
+      },
+      "png": "standalone-qml.png",
+      "sha256": "42c7917724d108494677e80fa69ce56daaad340e247297d710c4e30f17709398",
+      "extent": [
+        -40,
+        -85,
+        690,
+        135
+      ],
+      "pixels": [
+        1460,
+        440
+      ],
+      "dpi": 96
+    },
+    "reordered": {
+      "labels": {
+        "007": {
+          "text": "Zero zero seven",
+          "pinned": true,
+          "corners": [
+            [
+              512.0,
+              8.0
+            ],
+            [
+              564.3046875,
+              7.999999999999988
+            ],
+            [
+              564.3046875,
+              16.499999999999986
+            ],
+            [
+              512.0,
+              16.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((512 8, 564.3046875 8, 564.3046875 16.5, 512 16.5, 512 8))",
+          "rotation": -360.0,
+          "width": 52.3046875,
+          "height": 8.5
+        },
+        "C": {
+          "text": "Charlie",
+          "pinned": false,
+          "corners": [
+            [
+              205.0,
+              0.0
+            ],
+            [
+              227.8984375,
+              -5.6084996379701445e-15
+            ],
+            [
+              227.8984375,
+              8.499999999999995
+            ],
+            [
+              205.0,
+              8.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((205 0, 227.8984375 0, 227.8984375 8.5, 205 8.5, 205 0))",
+          "rotation": -360.0,
+          "width": 22.8984375,
+          "height": 8.5
+        },
+        "7": {
+          "text": "Seven",
+          "pinned": true,
+          "corners": [
+            [
+              612.0,
+              8.0
+            ],
+            [
+              632.0703125,
+              7.999999999999995
+            ],
+            [
+              632.0703125,
+              16.499999999999993
+            ],
+            [
+              612.0,
+              16.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((612 8, 632.0703125 8, 632.0703125 16.5, 612 16.5, 612 8))",
+          "rotation": -360.0,
+          "width": 20.0703125,
+          "height": 8.5
+        },
+        "B": {
+          "text": "Bravo",
+          "pinned": true,
+          "corners": [
+            [
+              112.0,
+              8.0
+            ],
+            [
+              130.921875,
+              7.999999999999996
+            ],
+            [
+              130.921875,
+              16.499999999999996
+            ],
+            [
+              112.0,
+              16.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((112 8, 130.921875 8, 130.921875 16.5, 112 16.5, 112 8))",
+          "rotation": -360.0,
+          "width": 18.921875,
+          "height": 8.5
+        },
+        "A": {
+          "text": "Alpha",
+          "pinned": true,
+          "corners": [
+            [
+              22.0,
+              28.0
+            ],
+            [
+              40.46875,
+              27.999999999999996
+            ],
+            [
+              40.46875,
+              36.5
+            ],
+            [
+              22.000000000000004,
+              36.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((22 28, 40.46875 28, 40.46875 36.5, 22 36.5, 22 28))",
+          "rotation": -360.0,
+          "width": 18.46875,
+          "height": 8.5
+        },
+        "N": {
+          "text": "New",
+          "pinned": false,
+          "corners": [
+            [
+              400.0,
+              0.0
+            ],
+            [
+              414.1640625,
+              -3.4691947607096114e-15
+            ],
+            [
+              414.1640625,
+              8.499999999999996
+            ],
+            [
+              400.0,
+              8.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((400 0, 414.1640625 0, 414.1640625 8.5, 400 8.5, 400 0))",
+          "rotation": -360.0,
+          "width": 14.1640625,
+          "height": 8.5
+        }
+      },
+      "png": "reordered-provider-fids.png",
+      "sha256": "42c7917724d108494677e80fa69ce56daaad340e247297d710c4e30f17709398",
+      "extent": [
+        -40,
+        -85,
+        690,
+        135
+      ],
+      "pixels": [
+        1460,
+        440
+      ],
+      "dpi": 96
+    },
+    "numeric_only_keys": {
+      "labels": {
+        "007": {
+          "text": "Zero zero seven",
+          "pinned": true,
+          "corners": [
+            [
+              512.0,
+              8.0
+            ],
+            [
+              564.3046875,
+              7.999999999999988
+            ],
+            [
+              564.3046875,
+              16.499999999999986
+            ],
+            [
+              512.0,
+              16.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((512 8, 564.3046875 8, 564.3046875 16.5, 512 16.5, 512 8))",
+          "rotation": -360.0,
+          "width": 52.3046875,
+          "height": 8.5
+        },
+        "7": {
+          "text": "Seven",
+          "pinned": true,
+          "corners": [
+            [
+              612.0,
+              8.0
+            ],
+            [
+              632.0703125,
+              7.999999999999995
+            ],
+            [
+              632.0703125,
+              16.499999999999993
+            ],
+            [
+              612.0,
+              16.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((612 8, 632.0703125 8, 632.0703125 16.5, 612 16.5, 612 8))",
+          "rotation": -360.0,
+          "width": 20.0703125,
+          "height": 8.5
+        }
+      },
+      "png": "numeric-only-string-keys.png",
+      "sha256": "a22f71dfcbf3a965a23b9dab1a4f9e508c62113e13431146c26648d9b41a1ff6",
+      "extent": [
+        -40,
+        -85,
+        690,
+        135
+      ],
+      "pixels": [
+        1460,
+        440
+      ],
+      "dpi": 96
+    },
+    "control_reference": {
+      "labels": {
+        "007": {
+          "text": "Zero zero seven",
+          "pinned": true,
+          "corners": [
+            [
+              512.0,
+              8.0
+            ],
+            [
+              564.3046875,
+              7.999999999999988
+            ],
+            [
+              564.3046875,
+              16.499999999999986
+            ],
+            [
+              512.0,
+              16.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((512 8, 564.3046875 8, 564.3046875 16.5, 512 16.5, 512 8))",
+          "rotation": -360.0,
+          "width": 52.3046875,
+          "height": 8.5
+        },
+        "D": {
+          "text": "Hidden",
+          "pinned": true,
+          "corners": [
+            [
+              342.0,
+              8.0
+            ],
+            [
+              365.046875,
+              7.999999999999995
+            ],
+            [
+              365.046875,
+              16.499999999999993
+            ],
+            [
+              342.0,
+              16.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((342 8, 365.046875 8, 365.046875 16.5, 342 16.5, 342 8))",
+          "rotation": -360.0,
+          "width": 23.046875,
+          "height": 8.5
+        },
+        "C": {
+          "text": "Charlie",
+          "pinned": false,
+          "corners": [
+            [
+              205.0,
+              0.0
+            ],
+            [
+              227.8984375,
+              -5.6084996379701445e-15
+            ],
+            [
+              227.8984375,
+              8.499999999999995
+            ],
+            [
+              205.0,
+              8.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((205 0, 227.8984375 0, 227.8984375 8.5, 205 8.5, 205 0))",
+          "rotation": -360.0,
+          "width": 22.8984375,
+          "height": 8.5
+        },
+        "7": {
+          "text": "Seven",
+          "pinned": true,
+          "corners": [
+            [
+              612.0,
+              8.0
+            ],
+            [
+              632.0703125,
+              7.999999999999995
+            ],
+            [
+              632.0703125,
+              16.499999999999993
+            ],
+            [
+              612.0,
+              16.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((612 8, 632.0703125 8, 632.0703125 16.5, 612 16.5, 612 8))",
+          "rotation": -360.0,
+          "width": 20.0703125,
+          "height": 8.5
+        },
+        "B": {
+          "text": "Bravo",
+          "pinned": true,
+          "corners": [
+            [
+              112.0,
+              8.0
+            ],
+            [
+              129.14904265783412,
+              0.003270078625192241
+            ],
+            [
+              132.74129788263008,
+              7.7068862684367145
+            ],
+            [
+              115.59225522479595,
+              15.703616189811523
+            ]
+          ],
+          "bounds_wkt": "Polygon ((112 8, 129.149042657834 0.003270078625, 132.74129788263 7.706886268437, 115.592255224796 15.703616189812, 112 8))",
+          "rotation": -335.0,
+          "width": 18.921875,
+          "height": 8.5
+        },
+        "A": {
+          "text": "Alpha",
+          "pinned": true,
+          "corners": [
+            [
+              22.0,
+              28.0
+            ],
+            [
+              40.46875,
+              27.999999999999996
+            ],
+            [
+              40.46875,
+              36.5
+            ],
+            [
+              22.000000000000004,
+              36.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((22 28, 40.46875 28, 40.46875 36.5, 22 36.5, 22 28))",
+          "rotation": -360.0,
+          "width": 18.46875,
+          "height": 8.5
+        },
+        "N": {
+          "text": "New",
+          "pinned": false,
+          "corners": [
+            [
+              400.0,
+              0.0
+            ],
+            [
+              414.1640625,
+              -3.4691947607096114e-15
+            ],
+            [
+              414.1640625,
+              8.499999999999996
+            ],
+            [
+              400.0,
+              8.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((400 0, 414.1640625 0, 414.1640625 8.5, 400 8.5, 400 0))",
+          "rotation": -360.0,
+          "width": 14.1640625,
+          "height": 8.5
+        }
+      },
+      "png": "control-independent-reference.png",
+      "sha256": "59fb00dfc84946a4f7bdfa12d355572d577f5cdfb16f05c0e30f19fc4c10d16d",
+      "extent": [
+        -40,
+        -85,
+        690,
+        135
+      ],
+      "pixels": [
+        1460,
+        440
+      ],
+      "dpi": 96
+    },
+    "control_project": {
+      "labels": {
+        "007": {
+          "text": "Zero zero seven",
+          "pinned": true,
+          "corners": [
+            [
+              512.0,
+              8.0
+            ],
+            [
+              564.3046875,
+              7.999999999999988
+            ],
+            [
+              564.3046875,
+              16.499999999999986
+            ],
+            [
+              512.0,
+              16.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((512 8, 564.3046875 8, 564.3046875 16.5, 512 16.5, 512 8))",
+          "rotation": -360.0,
+          "width": 52.3046875,
+          "height": 8.5
+        },
+        "D": {
+          "text": "Hidden",
+          "pinned": true,
+          "corners": [
+            [
+              342.0,
+              8.0
+            ],
+            [
+              365.046875,
+              7.999999999999995
+            ],
+            [
+              365.046875,
+              16.499999999999993
+            ],
+            [
+              342.0,
+              16.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((342 8, 365.046875 8, 365.046875 16.5, 342 16.5, 342 8))",
+          "rotation": -360.0,
+          "width": 23.046875,
+          "height": 8.5
+        },
+        "C": {
+          "text": "Charlie",
+          "pinned": false,
+          "corners": [
+            [
+              205.0,
+              0.0
+            ],
+            [
+              227.8984375,
+              -5.6084996379701445e-15
+            ],
+            [
+              227.8984375,
+              8.499999999999995
+            ],
+            [
+              205.0,
+              8.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((205 0, 227.8984375 0, 227.8984375 8.5, 205 8.5, 205 0))",
+          "rotation": -360.0,
+          "width": 22.8984375,
+          "height": 8.5
+        },
+        "7": {
+          "text": "Seven",
+          "pinned": true,
+          "corners": [
+            [
+              612.0,
+              8.0
+            ],
+            [
+              632.0703125,
+              7.999999999999995
+            ],
+            [
+              632.0703125,
+              16.499999999999993
+            ],
+            [
+              612.0,
+              16.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((612 8, 632.0703125 8, 632.0703125 16.5, 612 16.5, 612 8))",
+          "rotation": -360.0,
+          "width": 20.0703125,
+          "height": 8.5
+        },
+        "B": {
+          "text": "Bravo",
+          "pinned": true,
+          "corners": [
+            [
+              112.0,
+              8.0
+            ],
+            [
+              129.14904265783412,
+              0.003270078625192241
+            ],
+            [
+              132.74129788263008,
+              7.7068862684367145
+            ],
+            [
+              115.59225522479595,
+              15.703616189811523
+            ]
+          ],
+          "bounds_wkt": "Polygon ((112 8, 129.149042657834 0.003270078625, 132.74129788263 7.706886268437, 115.592255224796 15.703616189812, 112 8))",
+          "rotation": -335.0,
+          "width": 18.921875,
+          "height": 8.5
+        },
+        "A": {
+          "text": "Alpha",
+          "pinned": true,
+          "corners": [
+            [
+              22.0,
+              28.0
+            ],
+            [
+              40.46875,
+              27.999999999999996
+            ],
+            [
+              40.46875,
+              36.5
+            ],
+            [
+              22.000000000000004,
+              36.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((22 28, 40.46875 28, 40.46875 36.5, 22 36.5, 22 28))",
+          "rotation": -360.0,
+          "width": 18.46875,
+          "height": 8.5
+        },
+        "N": {
+          "text": "New",
+          "pinned": false,
+          "corners": [
+            [
+              400.0,
+              0.0
+            ],
+            [
+              414.1640625,
+              -3.4691947607096114e-15
+            ],
+            [
+              414.1640625,
+              8.499999999999996
+            ],
+            [
+              400.0,
+              8.5
+            ]
+          ],
+          "bounds_wkt": "Polygon ((400 0, 414.1640625 0, 414.1640625 8.5, 400 8.5, 400 0))",
+          "rotation": -360.0,
+          "width": 14.1640625,
+          "height": 8.5
+        }
+      },
+      "png": "control-visible-d-rotated-b.png",
+      "sha256": "97a5751ca06637781ca8e677a74adc322f6b1b9ccbf5e21307a5b83a9480e059",
+      "extent": [
+        -40,
+        -85,
+        690,
+        135
+      ],
+      "pixels": [
+        1460,
+        440
+      ],
+      "dpi": 96
+    }
+  },
+  "comparisons": {
+    "project": {
+      "007": {
+        "mode": "pinned",
+        "max_corner_distance": 0.0,
+        "position_and_polygon_match": true
+      },
+      "7": {
+        "mode": "pinned",
+        "max_corner_distance": 0.0,
+        "position_and_polygon_match": true
+      },
+      "A": {
+        "mode": "pinned",
+        "max_corner_distance": 0.0,
+        "position_and_polygon_match": true
+      },
+      "B": {
+        "mode": "pinned",
+        "max_corner_distance": 0.0,
+        "position_and_polygon_match": true
+      },
+      "C": {
+        "mode": "automatic",
+        "visible": true,
+        "exact_collision_placement_compared": false
+      },
+      "N": {
+        "mode": "automatic",
+        "visible": true,
+        "exact_collision_placement_compared": false
+      }
+    },
+    "standalone_qml": {
+      "007": {
+        "mode": "pinned",
+        "max_corner_distance": 0.0,
+        "position_and_polygon_match": true
+      },
+      "7": {
+        "mode": "pinned",
+        "max_corner_distance": 0.0,
+        "position_and_polygon_match": true
+      },
+      "A": {
+        "mode": "pinned",
+        "max_corner_distance": 0.0,
+        "position_and_polygon_match": true
+      },
+      "B": {
+        "mode": "pinned",
+        "max_corner_distance": 0.0,
+        "position_and_polygon_match": true
+      },
+      "C": {
+        "mode": "automatic",
+        "visible": true,
+        "exact_collision_placement_compared": false
+      },
+      "N": {
+        "mode": "automatic",
+        "visible": true,
+        "exact_collision_placement_compared": false
+      }
+    },
+    "reordered": {
+      "007": {
+        "mode": "pinned",
+        "max_corner_distance": 0.0,
+        "position_and_polygon_match": true
+      },
+      "7": {
+        "mode": "pinned",
+        "max_corner_distance": 0.0,
+        "position_and_polygon_match": true
+      },
+      "A": {
+        "mode": "pinned",
+        "max_corner_distance": 0.0,
+        "position_and_polygon_match": true
+      },
+      "B": {
+        "mode": "pinned",
+        "max_corner_distance": 0.0,
+        "position_and_polygon_match": true
+      },
+      "C": {
+        "mode": "automatic",
+        "visible": true,
+        "exact_collision_placement_compared": false
+      },
+      "N": {
+        "mode": "automatic",
+        "visible": true,
+        "exact_collision_placement_compared": false
+      }
+    },
+    "numeric_only_keys": {
+      "007": {
+        "mode": "pinned",
+        "max_corner_distance": 0.0,
+        "position_and_polygon_match": true
+      },
+      "7": {
+        "mode": "pinned",
+        "max_corner_distance": 0.0,
+        "position_and_polygon_match": true
+      }
+    },
+    "native_binding_controls": {
+      "007": {
+        "mode": "pinned",
+        "max_corner_distance": 0.0,
+        "position_and_polygon_match": true
+      },
+      "7": {
+        "mode": "pinned",
+        "max_corner_distance": 0.0,
+        "position_and_polygon_match": true
+      },
+      "A": {
+        "mode": "pinned",
+        "max_corner_distance": 0.0,
+        "position_and_polygon_match": true
+      },
+      "B": {
+        "mode": "pinned",
+        "max_corner_distance": 0.0,
+        "position_and_polygon_match": true
+      },
+      "C": {
+        "mode": "automatic",
+        "visible": true,
+        "exact_collision_placement_compared": false
+      },
+      "D": {
+        "mode": "pinned",
+        "max_corner_distance": 0.0,
+        "position_and_polygon_match": true
+      },
+      "N": {
+        "mode": "automatic",
+        "visible": true,
+        "exact_collision_placement_compared": false
+      }
+    }
+  },
+  "provider_fid_reordering": {
+    "before": {
+      "B": 2,
+      "N": 3,
+      "D": 4,
+      "A": 5,
+      "C": 6,
+      "7": 7,
+      "007": 8
+    },
+    "after": {
+      "007": 2,
+      "7": 3,
+      "C": 4,
+      "A": 5,
+      "D": 6,
+      "N": 7,
+      "B": 8
+    },
+    "changed_keys": [
+      "007",
+      "7",
+      "B",
+      "C",
+      "D",
+      "N"
+    ],
+    "stable_key_labels_unchanged": true
+  },
+  "numeric_only_string_key_control": {
+    "keys": [
+      "7",
+      "007"
+    ],
+    "provider_fids": {
+      "7": 2,
+      "007": 3
+    },
+    "native_type": "String",
+    "distinct_exact_strings_preserved": true,
+    "unchanged_supporting_file_hashes": {
+      "rebased.csvt": "9c7cacb4780ebdaaa3a8e87cb62061381d8879a7bdc920cb2b56d373983018ff",
+      "rebased.qml": "9022be97d4ad8cbcd581a35d52ac41f2c4c5e6089690541e295ce5e5bd0761e2",
+      "rebased.qgs": "4ff3dd94f49863af6cb58f8ae1412128d94f8a68f80308917886ce916252711e"
+    }
+  }
+}

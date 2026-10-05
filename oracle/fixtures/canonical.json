@@ -1,0 +1,13 @@
+{
+  "oldCSV": "key,x,y,label_x,label_y,rotation,show,fid\nA,0,0,12,8,0,1,100\nB,100,0,112,8,15,1,200\nC,200,0,,,0,1,300\nD,300,0,312,8,30,0,400\nE,400,0,412,8,0,1,500\n007,500,0,510,5,0,1,600\n7,600,0,620,6,0,1,700\n",
+  "newCSV": "key,x,y,text,fid\nA,10,20,駅 A,900\nB,120,10,\"B, right\",800\nC,205,0,\"C \"\"automatic\"\"\",700\nD,330,0,D hidden,600\nN,400,50,New line,500\n007,501,1,007 exact,400\n7,602,2,7 distinct,300\n",
+  "oldCRS": "EPSG:3857",
+  "newCRS": "EPSG:3857",
+  "decisions": {
+    "A": "follow",
+    "B": "keep",
+    "D": "follow",
+    "007": "follow",
+    "7": "keep"
+  }
+}

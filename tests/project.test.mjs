@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import {exportFiles} from '../src/export.mjs';import {parseProject} from '../src/project.mjs';
+const input={oldCSV:fs.readFileSync(new URL('../fixtures/old.csv',import.meta.url),'utf8'),newCSV:fs.readFileSync(new URL('../fixtures/new.csv',import.meta.url),'utf8'),oldCRS:'EPSG:3857',newCRS:'EPSG:3857'},decisions={A:'follow',B:'keep',D:'follow'};
+test('project roundtrip recomputes rather than trusts stored rows',async()=>{const files=await exportFiles(input,decisions),d=JSON.parse(files['labelrebase-project.json']);d.results={falseClaim:'ready'};assert.deepEqual(parseProject(JSON.stringify(d)).decisions,{B:'keep',D:'follow',A:'follow'});});
+test('project malformed, incomplete, stale decisions or mismatched CRS blocked',async()=>{const files=await exportFiles(input,decisions),raw=files['labelrebase-project.json'];assert.throws(()=>parseProject('{'));for(const change of [d=>d.version=99,d=>d.decisions={},d=>d.input.newCRS='EPSG:3395',d=>d.input.oldMapping=[],d=>d.decisions.N='follow']){const d=JSON.parse(raw);change(d);assert.throws(()=>parseProject(JSON.stringify(d)));}});
+
+test('project size cap is UTF-8 bytes',()=>assert.throws(()=>parseProject('日'.repeat(4400000)),/13 MB/));

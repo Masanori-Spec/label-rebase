@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {resolveStaticPath} from '../scripts/server-path.mjs';
+test('static mount preserves canonical root and safe children',()=>{assert.equal(resolveStaticPath('/tmp/site','/label-rebase/','/label-rebase/'),'/tmp/site');assert.equal(resolveStaticPath('/tmp/site','/label-rebase/web/index.html?cache=1','/label-rebase/'),'/tmp/site/web/index.html');});
+test('static mount rejects outside mount, traversal and malformed escapes',()=>{for(const p of ['/private','/label-rebase/%2e%2e/secret','/label-rebase/%2e%2e%2fsecret','/label-rebase/%'])assert.throws(()=>resolveStaticPath('/tmp/site',p,'/label-rebase/'));});
