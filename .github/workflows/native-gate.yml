@@ -1,7 +1,5 @@
 name: Native QGIS import and render gate
 on:
-  push:
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: read

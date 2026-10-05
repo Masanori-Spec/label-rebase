@@ -1,0 +1,115 @@
+name: Verify LabelRebase
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-core-and-independent-oracle:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [22, 24]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci --ignore-scripts
+      - run: npm run build
+      - name: Verify committed standalone distribution matches a fresh deterministic build
+        run: git diff --exit-code -- dist/index.html src/demo.mjs
+      - run: npm run check
+      - run: node --max-old-space-size=256 scripts/verify-boundary.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: label-core-node-${{ matrix.node }}
+          path: artifacts/boundary.json
+          if-no-files-found: error
+  sandboxed-browser-and-download:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    env:
+      BASE_PATH: /label-rebase/
+      BASE_URL: http://127.0.0.1:4173/label-rebase/
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci --ignore-scripts
+      - run: npx --no-install playwright install --with-deps chromium
+      - run: sudo apt-get update && sudo apt-get install --no-install-recommends -y fonts-noto-cjk
+      - run: npm run build
+      - name: Actual standalone app, download and mobile checks with sandbox enabled
+        run: |
+          mkdir -p artifacts/browser
+          npm run serve > artifacts/browser/server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          ready=0
+          for i in $(seq 1 30); do
+            if curl --fail --silent "$BASE_URL" > /dev/null; then ready=1; break; fi
+            sleep 1
+          done
+          test "$ready" = 1
+          npm run test:browser
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: label-browser-evidence
+          path: artifacts/browser/
+          if-no-files-found: error
+  native-qgis-project-and-browser-download:
+    needs: sandboxed-browser-and-download
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      QT_QPA_PLATFORM: offscreen
+      XDG_RUNTIME_DIR: /tmp/label-rebase-runtime
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/download-artifact@v4
+        with:
+          name: label-browser-evidence
+          path: artifacts/browser-download
+      - name: Install official distribution runtime only
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y python3-qgis fonts-dejavu-core
+          mkdir -p "$XDG_RUNTIME_DIR"
+          chmod 700 "$XDG_RUNTIME_DIR"
+      - run: node scripts/export-demo.mjs
+      - name: Native consumer validates actual CLI export
+        run: /usr/bin/python3 scripts/native-qgis.py --bundle artifacts/demo --out artifacts/native-cli
+      - name: Native consumer validates exact sandboxed browser download
+        run: /usr/bin/python3 scripts/native-qgis.py --bundle artifacts/browser-download/extracted --out artifacts/native-browser
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: label-native-evidence
+          path: |
+            artifacts/native-cli/
+            artifacts/native-browser/
+          if-no-files-found: error
